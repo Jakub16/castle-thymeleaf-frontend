@@ -12,9 +12,9 @@ public class ThymeleafController {
 
     private final IWeatherService weatherService;
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String homePage(Model model) {
         model.addAttribute("weather",weatherService.getLatestCurrentWeatherDto().getBody());
-        return "home";
+        return "homepage";
     }
 }

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary " data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container-fluid text-center" style="margin-top: 20px">
+        <div class="row border bg-dark-subtle" style = "margin: 1px">
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 8rem;">
+                    <div class="card-header" th:text="Temperatura"></div>
+                    <div class="card-body bi bi-thermometer" th:text="${weather.getTemperature()}"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 9.5rem;">
+                    <div class="card-header" th:text="Temperatura_od"></div>
+                    <div class="card-body bi bi-thermometer" th:text="${weather.getPerceivedTemperature()}"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 7rem;">
+                    <div class="card-header" th:text="Ciśnienie"></div>
+                    <div class="card-body bi bi-speedometer"  th:text="${weather.getPressure()} + hPa"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style="margin: 5px;">
+                <div class="card border-dark mb-3"  style="max-width: 7.5rem;">
+                    <div class="card-header" th:text="Wilgotność"></div>
+                    <div class="card-body bi bi-moisture"  th:text="${weather.getHumidity()} + '%'"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 8.5rem;">
+                    <div class="card-header" th:text="Zachmurzenie"></div>
+                    <div class="card-body bi bi-cloudy"  th:text="${weather.getCloudiness()} + '%'"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 8.5rem;">
+                    <div class="card-header" th:text="Wiatr"></div>
+                    <div class="card-body bi bi-wind"  th:text="${weather.getWindSpeed()}"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 9rem;">
+                    <div class="card-header" th:text="Wschód_słońca"></div>
+                    <div class="card-body bi bi-sunrise"  th:text="${weather.getSunrise()}"></div>
+                </div>
+            </div>
+            <div class="col border-dark" style = "margin: 5px">
+                <div class="card border-dark mb-3"  style="max-width: 9rem;">
+                    <div class="card-header" th:text="Zachód_słońca"></div>
+                    <div class="card-body bi bi-sunset"  th:text="${weather.getSunset()}"></div>
+                </div>
+            </div>
+        </div>
+<!--        <div class = "row" style="padding: 5px; margin: 5px">-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: aqua">dfgdfs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--            <div class="col border bx-dark" style="padding: 5px; margin: 10px; background-color: darkblue">dfgduufs</div>-->
+<!--        </div>-->
+    </div>
+</body>
+</html>
