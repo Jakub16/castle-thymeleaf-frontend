@@ -13,8 +13,16 @@ public class ThymeleafController {
     private final IWeatherService weatherService;
 
     @GetMapping("/")
-    public String homePage(Model model) {
+    public String homePageDailyForecast(Model model) {
         model.addAttribute("weather",weatherService.getLatestCurrentWeatherDto().getBody());
-        return "homepage";
+        model.addAttribute("dailyWeather", weatherService.getLatestDailyWeatherDto().getBody());
+        return "homepage_daily";
+    }
+
+    @GetMapping("/hourly_forecast")
+    public String homePageHourlyForecast(Model model) {
+        model.addAttribute("weather",weatherService.getLatestCurrentWeatherDto().getBody());
+        model.addAttribute("hourlyWeather", weatherService.getLatestHourlyWeatherDto().getBody());
+        return "homepage_hourly";
     }
 }
