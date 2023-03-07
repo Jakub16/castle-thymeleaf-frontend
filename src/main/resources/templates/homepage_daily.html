@@ -45,68 +45,148 @@
         <div class="row border bg-dark-subtle" style = "margin-right: 5px; margin-left: 5px">
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 8rem;">
-                    <div class="card-header" th:text="Temperatura"></div>
-                    <div class="card-body bi bi-thermometer" th:text="${weather.getTemperature()}"></div>
+                    <div class="card-header">Temperatura</div>
+                    <div class="card-body bi bi-thermometer" th:text="${weather.getTemperature()} + '°C'"></div>
                 </div>
             </div>
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 9.5rem;">
-                    <div class="card-header">Temperatura_odczuwalna</div>
-                    <div class="card-body bi bi-thermometer" th:text="${weather.getPerceivedTemperature()}"></div>
+                    <div class="card-header">Temperatura odczuwalna</div>
+                    <div class="card-body bi bi-thermometer" th:text="${weather.getPerceivedTemperature()} + '°C'"></div>
                 </div>
             </div>
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 7rem;">
-                    <div class="card-header" th:text="Ciśnienie"></div>
+                    <div class="card-header">Ciśnienie</div>
                     <div class="card-body bi bi-speedometer"  th:text="${weather.getPressure()} + hPa"></div>
                 </div>
             </div>
             <div class="col border-dark" style="margin: 5px;">
                 <div class="card border-dark mb-3"  style="max-width: 7.5rem;">
-                    <div class="card-header" th:text="Wilgotność"></div>
+                    <div class="card-header">Wilgotność</div>
                     <div class="card-body bi bi-moisture"  th:text="${weather.getHumidity()} + '%'"></div>
                 </div>
             </div>
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 8.5rem;">
-                    <div class="card-header" th:text="Zachmurzenie"></div>
+                    <div class="card-header">Zachmurzenie</div>
                     <div class="card-body bi bi-cloudy"  th:text="${weather.getCloudiness()} + '%'"></div>
                 </div>
             </div>
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 8.5rem;">
-                    <div class="card-header" th:text="Wiatr"></div>
+                    <div class="card-header" >Wiatr</div>
                     <div class="card-body bi bi-wind"  th:text="${weather.getWindSpeed()} + 'm/s'"></div>
                 </div>
             </div>
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 9rem;">
-                    <div class="card-header" th:text="Wschód_słońca"></div>
+                    <div class="card-header">Wschód słońca</div>
                     <div class="card-body bi bi-sunrise"  th:text="${weather.getSunrise()}"></div>
                 </div>
             </div>
             <div class="col border-dark" style = "margin: 5px">
                 <div class="card border-dark mb-3"  style="max-width: 9rem;">
-                    <div class="card-header" th:text="Zachód_słońca"></div>
+                    <div class="card-header">Zachód słońca</div>
                     <div class="card-body bi bi-sunset"  th:text="${weather.getSunset()}"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid text-center" style = "margin-top: 10px">
-        <div class ="card" style="border: medium solid black; margin-left: 5px; margin-right: 5px; font-size: x-large">Prognoza 7-dniowa</div>
-        <div class="row border bg-dark-subtle" th:each="dailyWeatherElement: ${dailyWeather.getDailyWeatherElementDtos()}" style = "margin-right: 5px; margin-left: 5px; margin-top: 10px">
-            <div class="row border bg-dark-subtle"  style= "margin-right: 5px; margin-left: 5px">
-                <div class="col">
-                    <h3><img th:src="@{${'https://openweathermap.org/img/wn/' + dailyWeatherElement.getWeatherDescriptionDto().getIcon() + '@2x.png'}}" alt="weather_icon" th:text="${dailyWeatherElement.getTime()}"></h3>
-                    <div th:text="'(' + ${dailyWeatherElement.getWeatherDescriptionDto().getDescription()} + ')'"></div>
+<div class ="card" style="border: medium solid black; margin-left: 10%; margin-right: 10%; font-size: x-large; margin-top: 15px; text-align: center">Prognoza 7-dniowa</div>
+    <div class="container-fluid text-center" th:each="dailyWeatherElement: ${dailyWeather.getDailyWeatherElementDtos()}" style = "margin-top: 15px">
+        <div class="row border bg-dark-subtle" style= "margin-right: 5px; margin-left: 5px">
+            <div class="col">
+                <h3><img th:src="@{${'https://openweathermap.org/img/wn/' + dailyWeatherElement.getWeatherDescriptionDto().getIcon() + '@2x.png'}}" alt="weather_icon" th:text="${dailyWeatherElement.getTime()}"></h3>
+                <div th:text="'(' + ${dailyWeatherElement.getWeatherDescriptionDto().getDescription()} + ')'"></div>
+            </div>
+        </div>
+        <div class="row border bg-dark-subtle" style = "margin-right: 5px; margin-left: 5px;">
+<!--            Card-->
+            <div class="col border-dark" style = "margin-top: 5px;">
+                <div class="card border-dark mb-3" style="max-width: 17rem">
+                    <div class="card-header">Temperatura</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                    <div class="card-header">Dzień</div>
+                                    <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getDayTemperature()} + '°C'"></div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                    <div class="card-header">Noc</div>
+                                    <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getNightTemperature()} + '°C'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col border-dark">
-                <div class="card border-dark mb-3" style="margin-top: 0.5%" th:text="${dailyWeatherElement.getPressure()}"></div>
+<!--            Another Card-->
+            <div class="col border-dark" style = "margin-top: 5px;">
+                <div class="card border-dark mb-3" style="max-width: 17rem">
+                    <div class="card-header">Temperatura odczuwalna</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                    <div class="card-header">Dzień</div>
+                                    <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getDayPerceivedTemperature()} + '°C'"></div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                    <div class="card-header">Noc</div>
+                                    <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getNightPerceivedTemperature()} + '°C'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
+            <div class="col" style="margin-top: 5px">
+                <div class="card border-dark mb-3" style="max-width: 7.5rem">
+                    <div class="card-header">Ciśnienie</div>
+                    <div class="card-body bi bi-speedometer" th:text="${dailyWeatherElement.getPressure()} + hPa"></div>
+                </div>
+                <div class="card border-dark mb-3" style="max-width: 7.5rem">
+                    <div class="card-header">Wilgotność</div>
+                    <div class="card-body bi bi-moisture" th:text="${dailyWeatherElement.getHumidity()} + '%'"></div>
+                </div>
+            </div>
+            <div class="col" style="margin-top: 5px">
+                <div class="card border-dark mb-3" style="max-width: 8.5rem">
+                    <div class="card-header">Wiatr</div>
+                    <div class="card-body bi bi-wind" th:text="${dailyWeatherElement.getWindSpeed()} + 'km/h'"></div>
+                </div>
+                <div class="card border-dark mb-3" style="max-width: 8.5rem">
+                    <div class="card-header">Zachmurzenie</div>
+                    <div class="card-body bi bi-wind" th:text="${dailyWeatherElement.getCloudiness()} + '%'"></div>
+                </div>
+            </div>
+            <div class="col" style="margin-top: 5px">
+                <div class="card border-dark mb-3" style="max-width: 8.5rem">
+                    <div class="card-header">Szansa opadów</div>
+                    <div class="card-body" th:text="${dailyWeatherElement.getProbabilityOfPrecipitation() * 100} + '%'"></div>
+                </div>
+                <div class="card border-dark mb-3" style="max-width: 8.5rem">
+                    <div class="card-header">Suma opadów</div>
+                    <div class="card-body bi bi-cloud-rain" th:text="${dailyWeatherElement.getRainAmount()} + 'mm'"></div>
+                </div>
+            </div>
+            <div class="col" style="margin-top: 5px">
+                <div class="card border-dark mb-3" style="max-width: 7.5rem">
+                    <div class="card-header">Wschód słońca</div>
+                    <div class="card-body bi bi-sunrise" th:text="${dailyWeatherElement.getSunrise()}"></div>
+                </div>
+                <div class="card border-dark mb-3" style="max-width: 7.5rem">
+                    <div class="card-header">Zachód słońca</div>
+                    <div class="card-body bi bi-sunset" th:text="${dailyWeatherElement.getSunset()}"></div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
