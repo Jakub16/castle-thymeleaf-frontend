@@ -38,8 +38,7 @@
         </nav>
         <div class="row border bg-dark-subtle"  style= "margin-right: 5px; margin-left: 5px">
             <div class="col">
-                <h3><img th:src="@{${'https://openweathermap.org/img/wn/' + weather.getWeatherDescriptionDto().getIcon() + '@2x.png'}}" alt="weather_icon">Aktualna pogoda</h3>
-                <div th:text="'(' + ${weather.getWeatherDescriptionDto().getDescription()} + ')'"></div>
+                <h3><img th:src="@{${'https://openweathermap.org/img/wn/' + weather.getWeatherDescriptionDto().getIcon() + '@2x.png'}}" th:text="'Aktualna pogoda' + ' (' + ${weather.getWeatherDescriptionDto().getDescription()} + ')'" alt="weather_icon"></h3>
             </div>
         </div>
         <div class="row border bg-dark-subtle" style = "margin-right: 5px; margin-left: 5px">
@@ -98,25 +97,24 @@
     <div class="container-fluid text-center" th:each="dailyWeatherElement: ${dailyWeather.getDailyWeatherElementDtos()}" style = "margin-top: 15px">
         <div class="row border bg-dark-subtle" style= "margin-right: 5px; margin-left: 5px">
             <div class="col">
-                <h3><img th:src="@{${'https://openweathermap.org/img/wn/' + dailyWeatherElement.getWeatherDescriptionDto().getIcon() + '@2x.png'}}" alt="weather_icon" th:text="${dailyWeatherElement.getTime()}"></h3>
-                <div th:text="'(' + ${dailyWeatherElement.getWeatherDescriptionDto().getDescription()} + ')'"></div>
+                <h3><img th:src="@{${'https://openweathermap.org/img/wn/' + dailyWeatherElement.getWeatherDescriptionDto().getIcon() + '@2x.png'}}" alt="weather_icon" th:text="${dailyWeatherElement.getTime()} + ' (' + ${dailyWeatherElement.getWeatherDescriptionDto().getDescription()} + ')'"></h3>
             </div>
         </div>
         <div class="row border bg-dark-subtle" style = "margin-right: 5px; margin-left: 5px;">
 <!--            Card-->
-            <div class="col border-dark" style = "margin-top: 5px;">
-                <div class="card border-dark mb-3" style="max-width: 17rem">
+            <div class="col border-dark" style = "margin-top: 5px">
+                <div class="card border-dark mb-3">
                     <div class="card-header">Temperatura</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                <div class="card border-dark mb-3">
                                     <div class="card-header">Dzień</div>
                                     <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getDayTemperature()} + '°C'"></div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                <div class="card border-dark mb-3">
                                     <div class="card-header">Noc</div>
                                     <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getNightTemperature()} + '°C'"></div>
                                 </div>
@@ -126,19 +124,19 @@
                 </div>
             </div>
 <!--            Another Card-->
-            <div class="col border-dark" style = "margin-top: 5px;">
+            <div class="col border-dark" style = "margin-top: 5px">
                 <div class="card border-dark mb-3" style="max-width: 17rem">
                     <div class="card-header">Temperatura odczuwalna</div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
-                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                <div class="card border-dark mb-3" style="max-width: 8rem">
                                     <div class="card-header">Dzień</div>
                                     <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getDayPerceivedTemperature()} + '°C'"></div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card border-dark mb-3" style="max-width: 6.5rem">
+                                <div class="card border-dark mb-3" style="max-width: 8rem">
                                     <div class="card-header">Noc</div>
                                     <div class="card-body bi bi-thermometer" th:text="${dailyWeatherElement.getNightPerceivedTemperature()} + '°C'"></div>
                                 </div>
